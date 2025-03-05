@@ -1,4 +1,4 @@
-import DeviceTable from "@/components/DeviceTable";
+import DeviceTable from "@/components/DeviceTable/DeviceTable";
 
 export default function Home() {
     return (
