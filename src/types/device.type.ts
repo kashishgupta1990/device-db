@@ -4,6 +4,8 @@ export enum DeviceStatus {
 }
 
 export type Device = {
+    id: string;
+    isSelected: boolean;
     name: string;
     device: string;
     path: string;

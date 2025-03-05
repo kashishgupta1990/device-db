@@ -3,6 +3,8 @@
 import { defaultDeviceData } from "@/consts/device.consts";
 import { Device } from "@/types/device.type";
 import { useState } from "react";
+import GlobalSelectCheckbox from "./GlobalSelectCheckbox";
+import DownloadSelected from "./DownloadSelected";
 
 const files = [
     {
@@ -40,6 +42,28 @@ const files = [
 const DeviceTable = () => {
     const [devices, setDevices] = useState<Device[]>(defaultDeviceData);
 
+    const setDeSelectAll = () => {
+        setDevices(prev => {
+            return [
+                ...prev.map(item => ({
+                    ...item,
+                    isSelected: false
+                }))
+            ]
+        })
+    }
+
+    const setSelectAll = () => {
+        setDevices(prev => {
+            return [
+                ...prev.map(item => ({
+                    ...item,
+                    isSelected: true
+                }))
+            ]
+        })
+    }
+
     const toggleSelect = (name) => {
         setSelected((prev) =>
             prev.includes(name)
@@ -51,14 +75,8 @@ const DeviceTable = () => {
     return (
         <div className="p-4">
             <div className="flex items-center mb-4">
-                <input type="checkbox" className="mr-2" />
-                <span className="text-gray-700 font-medium">None Selected</span>
-                <button
-                    className="ml-4 bg-gray-300 text-gray-700 px-3 py-1 rounded cursor-not-allowed"
-                    disabled
-                >
-                    ⬇ Download Selected
-                </button>
+                <GlobalSelectCheckbox devices={devices} setDeSelectAll={setDeSelectAll} setSelectAll={setSelectAll}/>
+                <DownloadSelected devices={devices}/>
             </div>
             <div className="overflow-x-auto border rounded-lg shadow">
                 <table className="min-w-full bg-white">
