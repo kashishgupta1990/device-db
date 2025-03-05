@@ -1,5 +1,4 @@
-import { Device, DeviceStatus } from "@/types/device.type";
-import React from "react";
+import { Device } from "@/types/device.type";
 import DeviceStatusView from "./DeviceStatusView";
 
 interface DeviceTableRowProps {
