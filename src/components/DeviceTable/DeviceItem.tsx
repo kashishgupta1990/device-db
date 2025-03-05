@@ -1,5 +1,6 @@
 import { Device, DeviceStatus } from "@/types/device.type";
 import React from "react";
+import DeviceStatusView from "./DeviceStatusView";
 
 interface DeviceTableRowProps {
     device: Device;
@@ -23,14 +24,7 @@ const DeviceTableRow = ({
             <td className="py-2 px-4">{device.device}</td>
             <td className="py-2 px-4 text-gray-600">{device.path}</td>
             <td className="py-2 px-4">
-                {device.status === DeviceStatus.Available ? (
-                    <div className="text-gray-500">
-                        <span className="text-green-500 font-bold">● </span>
-                        Available
-                    </div>
-                ) : (
-                    <span className="text-gray-500">{device.status}</span>
-                )}
+                <DeviceStatusView device={device}/>
             </td>
         </tr>
     );
